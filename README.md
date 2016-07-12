@@ -6,4 +6,17 @@ To build this operating system, you have to install Cygwin, Nasm and QEMU and ad
 Once you have done that, run the "build_windows.bat" script and ta-da, you are done.
 
 # Building (on linux)
-not described yet
+Requirements:
+
+1. [Nasm](http://www.nasm.us)
+2. [QEMU](http://wiki.qemu.org/Main_Page)
+
+and the requirements that go with those.
+Once you've installed those, you are ready to launch NimgOS.
+
+Launch an shell and navigate to the NimgOS directory, then do
+
+```shell
+./build-linux
+
+```
