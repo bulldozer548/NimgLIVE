@@ -1,2 +1,2 @@
-# NimgOS
-An operating system developed by people at the irc.rizon.net IRC server - channel #nimg_lobby
+# NimgOS Website
+The official website of NimgOS, an operating system developed by people at #nimg_lobby on Rizon
