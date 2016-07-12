@@ -32,8 +32,8 @@ mkdir build
 Launch an shell (e.g. the GNOME Terminal, LXTerminal, xterm) and navigate to the NimgOS directory, then do
 
 ```bash
-chmod +x build_linux
-./build-linux
+chmod +x b4_linux
+./b4_linux
 
 ```
 
