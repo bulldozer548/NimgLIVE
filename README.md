@@ -8,10 +8,10 @@ Requirements:
 2. [QEMU](http://wiki.qemu.org/Main_Page)
 3. [Cygwin](https://www.cygwin.com/)
 
-Once you've installed those, add them to the SYSTEM PATH enviroment variable.
+Once you've installed those, add them to the SYSTEM PATH environment variable.
 After that, create a folder "build" and run the script.
 
-This will build NimgOS and run it in an 32 bit QEMU enviroment.
+This will build NimgOS and run it in an 32 bit QEMU environment.
 
 # Building (on linux)
 Requirements:
@@ -23,6 +23,11 @@ and the requirements that go with those.
 Once you've installed those, you are ready to launch NimgOS.
 
 Create a folder "build".
+
+```bash
+mkdir build
+
+```
 
 Launch an shell (e.g. the GNOME Terminal, LXTerminal, xterm) and navigate to the NimgOS directory, then do
 
