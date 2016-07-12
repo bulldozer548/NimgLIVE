@@ -7,7 +7,8 @@ Requirements:
 1. [Nasm](http://www.nasm.us)
 2. [QEMU](http://wiki.qemu.org/Main_Page)
 3. [Cygwin](https://www.cygwin.com/)
-Once you'be installed those, add them to SYSTEM PATH enviroment variable.
+
+Once you've installed those, add them to the SYSTEM PATH enviroment variable.
 After that, create a folder "build" and run the script.
 
 This will build NimgOS and run it in an 32 bit QEMU enviroment.
