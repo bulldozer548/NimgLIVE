@@ -15,7 +15,7 @@ Requirements:
 and the requirements that go with those.
 Once you've installed those, you are ready to launch NimgOS.
 
-Launch an shell (e.g. the GNOME Terminal, LXTerminal, xterm and navigate to the NimgOS directory, then do
+Launch an shell (e.g. the GNOME Terminal, LXTerminal, xterm) and navigate to the NimgOS directory, then do
 
 ```bash
 ./build-linux
