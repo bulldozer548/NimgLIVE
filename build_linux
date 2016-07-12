@@ -25,11 +25,12 @@ gcc -m32 -o build/array.o -c kernel/std/array.c -nostdlib -lgcc
 echo "Compiling object files into kernel.bin"
 ld -m elf_i386 -T link.ld -o kernel.bin build/asm.o build/os.o build/io.o build/display.o build/ps2.o build/string.o build/time.o build/unistd.o build/output.o build/array.o
 
-echo Running operating system
+echo "Running operating system"
 if [ -e /usr/bin/qemu-* ]
 then
 qemu-system-i386 -kernel kernel.bin
 else
 echo "Please install QEMU."
 exit 1
+fi
 pause
