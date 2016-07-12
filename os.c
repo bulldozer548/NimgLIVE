@@ -19,7 +19,7 @@ void kern_main()
 	
 	output("NimgOS started succesfully at time: ");
 	print_time();
-	output("\nGet the list of commands by using command help.\nEnter a command:\n");
+	output("\nGet the list of commands by using command help.\nEnter an command:\n");
 	
 	string cmd = 0;
 	
@@ -29,7 +29,7 @@ void kern_main()
 		gets(cmd);
 		
 		if (strcmp(cmd, "help") == 0)
-			output("Commands: help clear time restart todolist");
+			output("Commands: help - clear -  time - restart - todolist");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
 		else if (strcmp(cmd, "restart") == 0)
@@ -41,7 +41,7 @@ void kern_main()
 			print_time();
 		}
 		else 
-			write_string("Bad command");
+			write_string("Command not found.");
 		
 		output("\n");
 		
