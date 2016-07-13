@@ -22,17 +22,22 @@ Requirements:
 and the requirements that go with those.
 Once you've installed those, you are ready to launch NimgOS.
 
-Create a folder "build".
+Launch an shell (e.g. the GNOME Terminal, LXTerminal, xterm) and navigate to the NimgOS directory.
+
+Create a folder named "build".
 
 ```bash
 mkdir build
 
 ```
-
-Launch an shell (e.g. the GNOME Terminal, LXTerminal, xterm) and navigate to the NimgOS directory, then do
+Make the b4_linux file executable.
 
 ```bash
 chmod +x b4_linux
+```
+Run the b4_linux file.
+
+```bash
 ./b4_linux
 
 ```
