@@ -27,7 +27,7 @@ const char ps2_keys_2[58] = {
 	'\0',	'\x1B',	'!',	'@',
 	'#',	'$',	'%',	'^',
 	'&',	'*',	'(',	')',
-	'_',	'+',	'\0',	'\t',
+	'_',	'+',	'\b',	'\t',
 	'Q',	'W',	'E',	'R',
 	'T',	'Y',	'U',	'I',
 	'O',	'P',	'{',	'}',
@@ -79,11 +79,11 @@ u8 PS2_handle_scancode(u8 scancode)
 	} else if (scancode == 0x2A)
 		drv_ps2.left_shift = true;
 	else if (scancode == 0xAA)
-		drv_ps2.left_shift = true;
+		drv_ps2.left_shift = false;
 	else if (scancode == 0x36)
 		drv_ps2.right_shift = true;
 	else if (scancode == 0xB6)
-		drv_ps2.right_shift = true;
+		drv_ps2.right_shift = false;
 	else if (scancode == 0x3A) {
 		if (!drv_ps2.caps_lock) {
 			drv_ps2.caps_lock = true;
@@ -108,10 +108,10 @@ u8 PS2_handle_scancode(u8 scancode)
 	}
 
 	if (drv_ps2.left_ctrl) {
-		if (scancode == 0x2E) {}
-			//write_string("^C");
-		else if (scancode == 0x20) {}
-			//write_string("^D");
+		if (scancode == 0x2E) 
+			write_string("^C");
+		else if (scancode == 0x20)
+			write_string("^D");
 	}
 	
 	bool uppercase = drv_ps2.caps_lock != (drv_ps2.left_shift || drv_ps2.right_shift);
@@ -147,15 +147,17 @@ u8 PS2_to_char(u8 scancode, bool uppercase, bool shift)
 		return ps2_keys_2[scancode];
 }
 
-char getc()
+char getc(bool enable_backspace)
 {
 	PS2_wait_keypress();
 	
 	u8 code = PS2_handle_scancode(inportb(0x60));
 	
+	if (!enable_backspace && code == '\b')
+		return false;
+	
 	if (code != 0)
 		write_char(code);
-	
 	return code;
 }
 
@@ -165,17 +167,23 @@ void gets(string str)
 	size_t i = 0;
 	char buf = 0;
 	
+	bool enable_back = false;
+	
 	while (true) {
-		buf = getc();
+		if (i > 0) enable_back = true;
+		else enable_back = false;
+		
+		buf = getc(enable_back);
 		
 		if (buf != 0) {
-			if (buf == '\n') {
+			if (buf == '\n')
 				break;
+			else if (buf == '\b')
+				i--; // reduce for 2 since we do i++ later
+			else {
+				str[i] = buf;
+				i++;
 			}
-			
-			str[i] = buf;
-			
-			i++;
 		}
 	}
 	

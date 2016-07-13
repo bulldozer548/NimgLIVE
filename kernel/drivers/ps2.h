@@ -45,7 +45,7 @@ bool PS2_is_letter(u8 c);
 u8 PS2_to_char(u8 scancode, bool uppercase, bool shift);
 
 // read character
-char getc();
+char getc(bool enable_backspace);
 
 // read string
 void gets(string str);

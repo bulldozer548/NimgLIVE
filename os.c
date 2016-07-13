@@ -35,7 +35,7 @@ void kern_main()
 		else if (strcmp(cmd, "restart") == 0)
 			reboot();
 		else if (strcmp(cmd, "todolist") == 0)
-			output("TODO list:\n\t- backspace character\n\t- fix shift/ctrl/caps lock keys\n\t- add scroll\n\t- add command manager (no hardcoding commands, please)");
+			output("TODO list:\n\t- fix unremovable CTRL+C\n\t- add scroll\n\t- add command manager (no hardcoding commands, please)");
 		else if (strcmp(cmd, "time") == 0) {
 			output("Current time: ");
 			print_time();
