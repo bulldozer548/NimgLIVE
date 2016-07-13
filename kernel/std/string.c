@@ -117,24 +117,32 @@ int strcmp(const char *s1, const char *s2){
     }
 }
 
-void tolower(char *c) {
-    if ('A' <= *c && *c <= 'Z')
-        *c += ' ';
+char char2lower(char c) {
+    if ('A' <= c && c <= 'Z')
+        return c + ' ';
+	else 
+		return c;
 }
 
-void toupper(char *c) {
-    if('a' <= *c && *c <= 'z')
-        *c -= ' ';
+char char2upper(char c) {
+    if ('a' <= c && c <= 'z')
+        return c - ' ';
+	else 
+		return c;
 }
 
-void strlwr(char *str) {
-    uint32 length = strlen(str);
-    for(uint32 i = 0; i < length; i++)
-        tolower(str[i]);
+void str2lower(char *str) {
+    u32 length = strlen(str);
+	
+	u32 i = 0;
+    for(; i < length; i++)
+        str[i] = char2lower(str[i]);
 }
 
-void strupr(char *str) {
-    uint32 length = strlen(str);
-    for(uint32 i = 0; i < length; i++)
-        toupper(str[i]);
+void str2upper(char *str) {
+    u32 length = strlen(str);
+	
+	u32 i = 0;
+    for(; i < length; i++)
+        str[i] = char2upper(str[i]);
 }

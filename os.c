@@ -28,6 +28,8 @@ void kern_main()
 		output("> ");
 		gets(cmd);
 		
+		str2lower(cmd);
+		
 		if (strcmp(cmd, "help") == 0)
 			output("Commands: help - clear -  time - restart - todolist");
 		else if (strcmp(cmd, "clear") == 0)
