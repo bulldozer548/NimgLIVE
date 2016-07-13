@@ -7,7 +7,7 @@ Requirements:
 1. [Nasm](http://www.nasm.us)
 2. [QEMU](http://wiki.qemu.org/Main_Page)
 3. [Cygwin](https://www.cygwin.com/) or MinGW [*1]
-4. [A GCC cross-compiler toolchain for i586-elf](https://www.mediafire.com/folder/drj2bx193eiay/i586-elf-gcc)
+4. [A GCC cross-compiler toolchain for i586-elf](https://www.mediafire.com/folder/drj2bx193eiay/i586-elf-gcc) (only for Cygwin)
 
 Once you've installed those, add them to the SYSTEM PATH environment variable.
 After that, create a folder "build" and run the script.
