@@ -1,4 +1,4 @@
-# NimgOS
+![NimgOS](http://puu.sh/pZokD/0c4a83186e.jpg)
 An operating system developed by people at the irc.rizon.net IRC server - channel #nimg_lobby
 
 # Building (on windows)
