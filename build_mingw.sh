@@ -23,6 +23,9 @@ gcc -m32 -o build/unistd.o -c kernel/std/unistd.c -nostdlib -nostdinc
 gcc -m32 -o build/output.o -c kernel/std/output.c -nostdlib -nostdinc
 gcc -m32 -o build/array.o -c kernel/std/array.c -nostdlib -nostdinc
 
+echo "Compiling unittest"
+gcc -m32 -o build/std_test.o -c kernel/unittest/std_test.c -nostdlib -nostdinc
+
 echo "Compiling object files into kernel.bin"
 ld -T link.ld -o kernel.a build/*.o
 objcopy -O elf32-i386 kernel.a kernel.bin

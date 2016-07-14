@@ -3,6 +3,7 @@
 #include "kernel/core/io.h"
 #include "kernel/std/stdio.h"
 #include "kernel/std/time.h"
+#include "kernel/unittest/unittest.h"
 
 void print_time()
 {
@@ -15,6 +16,7 @@ void print_time()
 void kern_main()
 {
 	display_init();
+	std_test();
 	PS2_init();
 	
 	output("NimgOS started succesfully at time: ");

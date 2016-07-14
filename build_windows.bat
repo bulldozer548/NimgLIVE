@@ -22,8 +22,13 @@ i586-elf-gcc -m32 -o build/unistd.o -c kernel/std/unistd.c -nostdlib -lgcc
 i586-elf-gcc -m32 -o build/output.o -c kernel/std/output.c -nostdlib -lgcc
 i586-elf-gcc -m32 -o build/array.o -c kernel/std/array.c -nostdlib -lgcc
 
+echo "Compiling unittest"
+gcc -m32 -o build/std_test.o -c kernel/unittest/std_test.c -nostdlib -nostdinc
+
 echo Compiling object files into kernel.bin
-i586-elf-ld -m elf_i386 -T link.ld -o kernel.bin build/asm.o build/os.o build/io.o build/display.o build/ps2.o build/string.o build/time.o build/unistd.o build/output.o build/array.o
+i586-elf-ld -m elf_i386 -T link.ld -o kernel.bin build/asm.o build/os.o^
+ build/io.o build/display.o build/ps2.o build/string.o build/time.o^
+ build/unistd.o build/output.o build/array.o build/std_test.o
 
 echo Running operating system
 qemu-system-i386 -kernel kernel.bin
