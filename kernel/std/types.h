@@ -16,13 +16,9 @@ typedef signed long long	s64;
 typedef unsigned int		size_t;
 typedef unsigned long long	time_t;
 
-typedef char bool;
-
-#define true 1
-#define false 0
+typedef enum { false, true } bool;
 
 #define NULL 0
-
 
 #endif
 

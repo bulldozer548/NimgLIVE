@@ -4,7 +4,6 @@
 * oarray.h
 *
 * Author(s): Jonathan Haigh
-* Last edited by: Jonathan Haigh
 * --------------------------------------------------*/
 
 #ifndef _OARRAY_H
@@ -14,9 +13,9 @@
 #include "types.h"
 
 typedef struct {
-    container_item *data;
-    u32    max_size;
-    u32    size;
+	container_item *data;
+	u32 max_size;
+	u32 size;
 } array;
 
 

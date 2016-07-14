@@ -1,6 +1,8 @@
 # ![NimgOS](http://puu.sh/pZokD/0c4a83186e.jpg)
 An operating system developed by people at the IRC server irc.rizon.net - channel #nimg_lobby
 License: MIT (see file LICENSE)
+Code style guidelines: [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle)
+
 
 # Building on Windows
 Requirements
