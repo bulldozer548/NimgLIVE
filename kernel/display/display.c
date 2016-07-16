@@ -1,12 +1,21 @@
 #include "display.h"
 #include "../std/string.h"
 
+void display_set_color(Color fg, Color bg)
+{
+	// Get first 4 bits of FG
+	// Get last 4 bits of BG
+	screen.color = (((u8)bg) << 4) | ((u8)fg & 0x0F);
+}
+
 // clear all chars
 void display_clear()
 {
 	u32 i = 0;
-	for (i; i < screen.vidmem_size; i++)
-		screen.vidmem[i] = NULL;
+	for (i; i < screen.vidmem_size; i+=2) {
+		screen.vidmem[i] = ' ';
+		screen.vidmem[i+1] = 0x0F;
+	}
 	
 	screen.curX = 0;
 	screen.curY = 0;
@@ -24,6 +33,8 @@ void display_init()
 	screen.vidmem_size = screen.width * screen.height * screen.depth;
 	
 	display_clear();
+	
+	display_set_color(White, Black);
 }
 
 // set cursor position
@@ -43,7 +54,7 @@ void display_set_cursor(u8 x, u8 y)
 	outportb(0x3D5, pos >> 8);
 	outportb(0x3D4, 15);
 	outportb(0x3D5, pos);
-	
+
 	// update information
 	screen.curX = x;
 	screen.curY = y;
@@ -75,7 +86,7 @@ void write_char(char c)
 				screen.curX--;
 				u32 pos = (screen.curY * screen.width + screen.curX) * screen.depth;
 				screen.vidmem[pos] = 0x00;
-				screen.vidmem[pos+1] = 0x0F;
+				screen.vidmem[pos+1] = screen.color;
 			}
 			else {
 				if (screen.curY >= 0) {
@@ -95,7 +106,7 @@ void write_char(char c)
 			u32 loc = (screen.curY * screen.width + screen.curX) * screen.depth;
 			
 			screen.vidmem[loc] = c;		// put a char
-			screen.vidmem[loc+1] = 0x0F;	// set a color
+			screen.vidmem[loc+1] = screen.color; // set a color
 			
 			// update cursor position
 			screen.curX++; 

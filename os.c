@@ -15,9 +15,10 @@ void print_time()
 
 void kern_main()
 {
+	gdt_init();
 	display_init();
-	std_test();
 	PS2_init();
+	std_test();
 
 	output("NimgOS started succesfully on ");
 	print_time();
@@ -39,6 +40,8 @@ void kern_main()
 			reboot();
 		else if (strcmp(cmd, "todolist") == 0)
 			output("TODO list:\n\t- fix unremovable CTRL+C\n\t- add scroll\n\t- add command manager (no hardcoding commands, please)");
+		else if (strcmp(cmd, "setcur") == 0)
+			display_set_cursor(10, 10);
 		else if (strcmp(cmd, "time") == 0) {
 			output("Current time: ");
 			print_time();

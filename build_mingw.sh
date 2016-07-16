@@ -9,6 +9,7 @@ gcc -m32 -o build/os.o -c os.c -nostdlib -nostdinc
 
 echo "Compiling core functions"
 gcc -m32 -o build/io.o -c kernel/core/io.c -nostdlib -nostdinc
+gcc -m32 -o build/gdt.o -c kernel/core/gdt.c -nostdlib -nostdinc
 
 echo "Compiling display functions"
 gcc -m32 -o build/display.o -c kernel/display/display.c -nostdlib -nostdinc

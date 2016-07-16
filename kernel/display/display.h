@@ -15,9 +15,36 @@ struct display
 	// display information
 	u8 width, height, depth;
 	u32 vidmem_size;
+	
+	// current color
+	u8 color;
 };
 
 struct display screen;
+
+// all colors
+typedef enum
+{
+	Black,
+	Blue,   
+	Green,
+	Cyan,
+	Red,
+	Magenta,
+	Brown,
+	LightGrey,
+	DarkGrey,
+	LightBlue,
+	LightGreen,
+	LightCyan,
+	LightRed,
+	LightMagenta,
+	LightBrown,
+	White
+} Color;
+
+// set color
+void display_set_color(Color fg, Color bg);
 
 // clear all chars
 void display_clear();

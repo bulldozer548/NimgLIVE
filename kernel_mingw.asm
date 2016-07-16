@@ -12,3 +12,19 @@ start:
         call _kern_main
 		cli
         hlt
+		
+		
+; Global Descriptor Table
+global _gdt_reload_sr
+extern _gdt
+
+_gdt_reload_sr:
+	lgdt [_gdt]
+	jmp   0x08		; 0x08 = code selector
+	mov   AX, 0x10	; 0x10 = data selector
+	mov   DS, AX
+	mov   ES, AX
+	mov   FS, AX
+	mov   GS, AX
+	mov   SS, AX
+	ret

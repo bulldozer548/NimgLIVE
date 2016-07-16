@@ -171,6 +171,7 @@ char getc(bool enable_backspace)
 
 	if (code != 0)
 		write_char(code);
+	
 	return code;
 }
 
@@ -182,7 +183,6 @@ void gets(string str)
 
 	while (true) {
 		buf = getc(i > 0);
-
 		if (buf != 0) {
 			if (buf == '\n')
 				break;

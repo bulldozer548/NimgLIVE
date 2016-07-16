@@ -11,6 +11,7 @@ i586-elf-gcc -m32 -o build/os.o -c os.c -nostdlib -lgcc
 
 echo Compiling core
 i586-elf-gcc -m32 -o build/io.o -c kernel/core/io.c -nostdlib -lgcc
+i586-elf-gcc -m32 -o build/gdt.o -c kernel/core/gdt.c -nostdlib -lgcc
 
 echo Compiling display
 i586-elf-gcc -m32 -o build/display.o -c kernel/display/display.c -nostdlib -lgcc
@@ -30,8 +31,8 @@ i586-elf-gcc -m32 -o build/std_test.o -c kernel/unittest/std_test.c -nostdlib -n
 
 echo Compiling object files into kernel.bin
 i586-elf-ld -m elf_i386 -T link.ld -o kernel.bin build/asm.o build/os.o^
- build/io.o build/display.o build/ps2.o build/string.o build/time.o^
- build/unistd.o build/output.o build/array.o build/std_test.o
+ build/io.o build/gdt.o build/display.o build/ps2.o build/string.o^
+ build/time.o build/unistd.o build/output.o build/array.o build/std_test.o
 
 echo Running operating system
 qemu-system-i386 -kernel kernel.bin

@@ -1,5 +1,6 @@
 #include "../std/string.h"
 #include "../std/time.h"
+#include "unittest.h"
 
 #define assert(condition) if (!(condition)) write_string("Assertion failed: " #condition "\n")
 
