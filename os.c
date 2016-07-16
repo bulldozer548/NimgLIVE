@@ -9,7 +9,7 @@ void print_time()
 {
 	struct time tm;
 	gettime(&tm);
-	
+
 	output("%d.%d.%d, %d:%d:%d", tm.day, tm.month, tm.year, tm.hour, tm.minute, tm.second);
 }
 
@@ -18,20 +18,19 @@ void kern_main()
 	display_init();
 	std_test();
 	PS2_init();
-	
+
 	output("NimgOS started succesfully on ");
 	print_time();
-	output("\nType "help" to see all available commands.\nEnter a command:\n");
-	
+	output("\nType \"help\" to see all available commands.\nEnter a command:\n");
+
 	string cmd = 0;
-	
-	while (1)
-	{
+
+	while (true) {
 		output("> ");
 		gets(cmd);
-		
+
 		str2lower(cmd);
-		
+
 		if (strcmp(cmd, "help") == 0)
 			output("Commands: help - clear -  time - restart - todolist");
 		else if (strcmp(cmd, "clear") == 0)
@@ -44,11 +43,11 @@ void kern_main()
 			output("Current time: ");
 			print_time();
 		}
-		else 
+		else
 			write_string("Command not found.");
-		
+
 		output("\n");
-		
+
 		cmd = 0;
 	}
 }

@@ -1,148 +1,137 @@
 #include "string.h"
 
-void * memcpy(void *dest, const void *src, size_t count){
+void *memcpy(void *dest, const void *src, size_t count)
+{
+	char *dest_c = (char*)dest;
+	char *src_c  = (char*)src;
+	size_t i;
 
-    char * dest_c   = (char *) dest;
-    char * src_c    = (char *) src;
+	for (i = 0; i < count; i++)
+		*(dest_c + i) = *(src_c + i);
 
-    size_t i;
-
-    for( i=0 ; i<count ; i++){
-        *(dest_c + i)   = *(src_c + i);
-    }
-
-    return dest;
+	return dest;
 }
 
+void *memmove(void *dest, const void *src, size_t count)
+{
+	char *dest_c = (char*)dest;
+	char *src_c  = (char*)src;
+	size_t i;
 
-void * memmove(void *dest, const void *src, size_t count){
+	if (src > dest) {
+		for (i = 0; i < count; i++)
+			*(dest_c + i) = *(src_c + i);
+	} else {
+		for (i = count-1; i >= 0; i--)
+			*(dest_c + i) = *(src_c + i);
+	}
 
-    char * dest_c   = (char *) dest;
-    char * src_c    = (char *) src;
-
-    size_t i;
-
-    if(src > dest){
-        for( i=0 ; i<count ; i++){
-            *(dest_c + i)   = *(src_c + i);
-        }
-    }
-    else{
-        for( i=count-1 ; i>=0 ; i--){
-            *(dest_c + i)   = *(src_c + i);
-        }
-    }
-
-    return dest;
+	return dest;
 }
 
-void * memset(void *dest, int val, size_t count){
+void *memset(void *dest, int val, size_t count)
+{
+	char *dest_c = (char*)dest; 
+	char val_c   = (char)val; 
+	size_t i;
 
-    char *dest_c    = (char *) dest; 
-    char val_c      = (char) val; 
-    size_t i;
+	for (i = 0; i < count; i++)
+		*(dest_c + i) = val_c;
 
-    for( i=0 ; i<count ; i++ ){
-        *(dest_c + i) = val_c;
-    }
-
-    return dest;
+	return dest;
 }
 
-void * memset_w(void *dest, int val, size_t count){
+void *memset_w(void *dest, int val, size_t count)
+{
+	u16 *dest_w = (u16*)dest; 
+	u16 val_w   = (u16)val; 
+	size_t i;
 
-    u16 *dest_w    = (u16 *) dest; 
-    u16 val_w      = (u16) val; 
-    size_t i;
+	for (i = 0; i < count; i++)
+		*(dest_w + i) = val_w;
 
-    for( i=0 ; i<count ; i++ ){
-        *(dest_w + i) = val_w;
-    }
-
-    return dest;
+	return dest;
 }
 
-size_t strlen(const char *str){
+size_t strlen(const char *str)
+{
+	size_t start = (size_t)str;
+	while (*(++str) != '\0');
 
-    size_t len  = 0;
-
-    while(*str != '\0'){
-        len++;
-        str++;
-    }
-
-    return len;
+	return start - (size_t)str;
 }
 
 char *strcpy(char *dest, const char *src){
 
-    int i;
+	int i;
 
-    for(i=0; *(src+i) != '\0'; i++){
-        *(dest+i) = *(src+i);
-    }
+	for (i = 0; *(src+i) != '\0'; i++)
+		*(dest + i) = *(src + i);
 
-    *(dest+i)   = '\0';
+	*(dest + i) = '\0';
 
-    return dest;
+	return dest;
 }
 
-char *strcpy_n(char *dest, const char *src, size_t max_len){
+char *strcpy_n(char *dest, const char *src, size_t max_len)
+{
+	int i;
 
-    int i;
+	for (i = 0; i < max_len - 1 && *(src + i) != '\0'; i++)
+		*(dest + i) = *(src + i);
 
-    for(i=0; i < max_len-1 && *(src+i) != '\0'; i++){
-        *(dest+i) = *(src+i);
-    }
+	*(dest + i) = '\0';
 
-    *(dest+i)   = '\0';
-
-    return dest;
+	return dest;
 }
 
-char *strcat(char *dest, const char *src){
-    return strcpy(dest + strlen(dest), src);
+char *strcat(char *dest, const char *src)
+{
+	return strcpy(dest + strlen(dest), src);
 }
 
-int strcmp(const char *s1, const char *s2){
+int strcmp(const char *s1, const char *s2)
+{
+	int i;
+	for (i = 0; true; i++){
+		if (s1[i] == '\0' && s2[i] == '\0')
+			return 0;
 
-    int i;
-    for(i=0; 1; i++){
-
-        if(s1[i] == '\0' && s2[i] == '\0') return 0;
-
-        if((unsigned char) s1[i] != (unsigned char) s2[i]){
-            return (unsigned char) s1[i] - (unsigned char) s2[i];
-        }
-    }
+		if (s1[i] != s2[i])
+			return s1[i] - s2[i];
+	}
 }
 
-char char2lower(char c) {
-    if ('A' <= c && c <= 'Z')
-        return c + ' ';
+char char2lower(char c)
+{
+	if ('A' <= c && c <= 'Z')
+		return c + ' ';
 	else 
 		return c;
 }
 
-char char2upper(char c) {
-    if ('a' <= c && c <= 'z')
-        return c - ' ';
+char char2upper(char c)
+{
+	if ('a' <= c && c <= 'z')
+		return c - ' ';
 	else 
 		return c;
 }
 
-void str2lower(char *str) {
-    u32 length = strlen(str);
-	
+void str2lower(char *str)
+{
+	u32 length = strlen(str);
+
 	u32 i = 0;
-    for(; i < length; i++)
-        str[i] = char2lower(str[i]);
+	for(; i < length; i++)
+		str[i] = char2lower(str[i]);
 }
 
-void str2upper(char *str) {
-    u32 length = strlen(str);
+void str2upper(char *str)
+{
+	u32 length = strlen(str);
 	
 	u32 i = 0;
-    for(; i < length; i++)
-        str[i] = char2upper(str[i]);
+	for(; i < length; i++)
+		str[i] = char2upper(str[i]);
 }

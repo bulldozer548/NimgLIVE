@@ -50,12 +50,12 @@ void PS2_create()
 	drv_ps2.caps_lock = false;
 	drv_ps2.left_ctrl = false;
 	drv_ps2.altgr = false;
-	
-	
+
+
 	u32 i = 0;
 	for (; i < 4; i++)
 		drv_ps2.mouse_packet[i] = NULL;
-	
+
 	drv_ps2.mouse_index = 0;
 	drv_ps2.mouse_x = 0;
 	drv_ps2.mouse_y = 0;
@@ -73,89 +73,102 @@ void PS2_init()
 }
 
 u8 PS2_handle_scancode(u8 scancode)
-{ 
-	if (scancode == 0) {
-		// do nothing
-	} else if (scancode == 0x2A)
+{	// Convert PS2 input to character or NULL
+	switch (scancode) {
+			/* SHIFT KEY */
+	case 0x2A:
 		drv_ps2.left_shift = true;
-	else if (scancode == 0xAA)
+		break;
+	case 0xAA:
 		drv_ps2.left_shift = false;
-	else if (scancode == 0x36)
+		break;
+	case 0x36:
 		drv_ps2.right_shift = true;
-	else if (scancode == 0xB6)
+		break;
+	case 0xB6:
 		drv_ps2.right_shift = false;
-	else if (scancode == 0x3A) {
-		if (!drv_ps2.caps_lock) {
+		break;
+			/* CAPS LOCK KEY */
+	case 0x3A:
+		if (!drv_ps2.caps_lock)
 			drv_ps2.caps_lock = true;
-			drv_ps2.caps_lock_toggle = true;
-		}
-		else drv_ps2.caps_lock_toggle = false;
-	} else if (scancode == 0xBA) {
+
+		drv_ps2.caps_lock_toggle = !drv_ps2.caps_lock;
+		break;
+	case 0xBA:
 		if (drv_ps2.caps_lock && !drv_ps2.caps_lock_toggle)
 			drv_ps2.caps_lock = false;
-	} else if (scancode == 0x1D)
+		break;
+			/* CTRL KEY */
+	case 0x1D:
 		drv_ps2.left_ctrl = true;
-	else if (scancode == 0x9D) {
+		break;
+	case 0x9D:
 		drv_ps2.left_ctrl = false;
-	} else if (scancode == 0xE0) {
-		u8 folByte = inportb(0x60);
-		
-		if (folByte == 0x38)
+		break;
+			/* ALTGR KEY */
+	case 0xE0: {
+		u8 keycode = inportb(0x60);
+
+		if (keycode == 0x38)
 			drv_ps2.altgr = true;
-		else if (folByte == 0xB8)
+		else if (keycode == 0xB8)
 			drv_ps2.altgr = false;
-		else scancode = folByte;
+		else
+			scancode = keycode;
+		} break;
+	case 0:
+		// Do nothing
+		break;
 	}
 
 	if (drv_ps2.left_ctrl) {
-		if (scancode == 0x2E) 
+		if (scancode == 0x2E)
 			write_string("^C");
 		else if (scancode == 0x20)
 			write_string("^D");
 	}
-	
+
 	bool uppercase = drv_ps2.caps_lock != (drv_ps2.left_shift || drv_ps2.right_shift);
 
-	
 	if (scancode < 58)
 		return PS2_to_char(scancode & 0x7F, uppercase, drv_ps2.left_shift || drv_ps2.right_shift);
-	
+
 	return NULL;
 }
 
 bool PS2_is_letter(u8 c)
 {
-	if ((c >= 16 && c <= 25) || (c >= 30 && c <= 38) || (c >= 44 && c <= 50))
-		return true;
-	
-	return false;
+	return (c >= 16 && c <= 25
+			|| c >= 30 && c <= 38
+			|| c >= 44 && c <= 50);
 }
 
 u8 PS2_to_char(u8 scancode, bool uppercase, bool shift)
 {
 	// which table will we use?
 	bool firstTable = true;
-	
+
 	// we will use second key layout table
 	if ((shift && !PS2_is_letter(scancode)) || (uppercase && PS2_is_letter(scancode)))
 		firstTable = false;
-	
+
 	// return character
 	if (firstTable)
 		return ps2_keys_1[scancode];
-	else 
+	else
 		return ps2_keys_2[scancode];
 }
 
 char getc(bool enable_backspace)
 {
 	PS2_wait_keypress();
-	
+
 	u8 code = PS2_handle_scancode(inportb(0x60));
-	
+
 	if (!enable_backspace && code == '\b')
 		return false;
-	
+
 	if (code != 0)
 		write_char(code);
 	return code;
@@ -166,15 +179,10 @@ void gets(string str)
 	str = 0;
 	size_t i = 0;
 	char buf = 0;
-	
-	bool enable_back = false;
-	
+
 	while (true) {
-		if (i > 0) enable_back = true;
-		else enable_back = false;
-		
-		buf = getc(enable_back);
-		
+		buf = getc(i > 0);
+
 		if (buf != 0) {
 			if (buf == '\n')
 				break;
@@ -186,6 +194,6 @@ void gets(string str)
 			}
 		}
 	}
-	
+
 	str[i] = '\0';
 }
