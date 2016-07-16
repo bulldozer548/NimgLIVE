@@ -19,9 +19,9 @@ void kern_main()
 	std_test();
 	PS2_init();
 	
-	output("NimgOS started succesfully at time: ");
+	output("NimgOS started succesfully on ");
 	print_time();
-	output("\nGet the list of commands by using command help.\nEnter an command:\n");
+	output("\nType "help" to see all available commands.\nEnter a command:\n");
 	
 	string cmd = 0;
 	
