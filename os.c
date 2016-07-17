@@ -33,9 +33,11 @@ void kern_main()
 		str2lower(cmd);
 
 		if (strcmp(cmd, "help") == 0)
-			output("Commands: help - about - clear -  time - restart - todolist");
+			output("Commands: help - about - credits - clear -  time - restart - todolist");
 		else if (strcmp(cmd, "about") == 0)
-			output("NimgOS Alpha\nCopyright (c) 2016 Njifra and contributors.");
+			output("NimgOS Alpha\nCopyright (c) 2016 Njifra and contributors.\nType \"credits\" to see a list of all contributors.");
+		else if (strcmp(cmd, "credits") == 0)
+			output("NimgOS\nCopyright (c) 2016 Njifra and contributors.\nThanks to the following people that contributed to this project:\n\tKrock (SmallJoker)\n\tZumza (Zumza123)\n\txerox123 (xerox123official)\n\tF4ncy (xshotD)\n\tbulldozer (bulldozer548)");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
 		else if (strcmp(cmd, "restart") == 0)
