@@ -33,7 +33,9 @@ void kern_main()
 		str2lower(cmd);
 
 		if (strcmp(cmd, "help") == 0)
-			output("Commands: help - clear -  time - restart - todolist");
+			output("Commands: help - about - clear -  time - restart - todolist");
+		else if (strcmp(cmd, "about") == 0)
+			output("NimgOS Alpha\nCopyright (c) 2016 Njifra and contributors.");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
 		else if (strcmp(cmd, "restart") == 0)
