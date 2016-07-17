@@ -19,9 +19,10 @@ void kern_main()
 	std_test();
 	PS2_init();
 	
-	output("NimgOS started succesfully at time: ");
+	output("NimgLIVE started successfully on ");
 	print_time();
-	output("\nGet the list of commands by using command help.\nEnter an command:\n");
+	output("\nLive distribution created by bulldozer");
+	output("\nGet the list of commands by using command help.\nEnter a command:\n");
 	
 	string cmd = 0;
 	
@@ -33,7 +34,9 @@ void kern_main()
 		str2lower(cmd);
 		
 		if (strcmp(cmd, "help") == 0)
-			output("Commands: help - clear -  time - restart - todolist");
+			output("Commands: help - about - clear - time - restart - todolist");
+		else if (strcmp(cmd, "about") == 0)
+			output("NimgOS Alpha - Copyright (c) 2016 Njifra and contributors\nNimgLIVE created by bulldozer");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
 		else if (strcmp(cmd, "restart") == 0)
@@ -43,8 +46,9 @@ void kern_main()
 		else if (strcmp(cmd, "time") == 0) {
 			output("Current time: ");
 			print_time();
-		}
-		else 
+		} else if (strcmp(cmd, "kock") == 0)
+			output("dem kock");
+		else
 			write_string("Command not found.");
 		
 		output("\n");
