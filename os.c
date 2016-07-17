@@ -20,7 +20,7 @@ void kern_main()
 	PS2_init();
 	std_test();
 
-	output("NimgOS started succesfully on ");
+	output("NimgOS started successfully on ");
 	print_time();
 	output("\nType \"help\" to see all available commands.\nEnter a command:\n");
 
@@ -43,7 +43,7 @@ void kern_main()
 		else if (strcmp(cmd, "restart") == 0)
 			reboot();
 		else if (strcmp(cmd, "todolist") == 0)
-			output("TODO list:\n\t- fix unremovable CTRL+C\n\t- add scroll\n\t- add command manager (no hardcoding commands, please)");
+			output("TODO list:\n\t- fix non-removable CTRL+C\n\t- add scrolling\n\t- add a command manager (no hardcoded commands, please)");
 		else if (strcmp(cmd, "setcur") == 0)
 			display_set_cursor(10, 10);
 		else if (strcmp(cmd, "time") == 0) {
