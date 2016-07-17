@@ -3,6 +3,8 @@
 
 #include "../std/types.h"
 
+#define GDT_ENTRY_COUNT 3
+
 // GDT entry
 struct GDT_entry
 {
@@ -14,16 +16,17 @@ struct GDT_entry
 	u8 base_high;
 };
 
+struct GDT_entry gdt_ent[GDT_ENTRY_COUNT];
+
 // GDT
 struct GDT
 {
 	u16 limit; 
-	u32 base;
+	struct GDT_entry (*base)[GDT_ENTRY_COUNT];
 };
 
 // define GDT with 3 entries
 struct GDT gdt;
-struct GDT_entry gdt_ent[3];
 
 // the following function will be declared in kernel.asm
 // it reloads the new segment registers

@@ -1,19 +1,21 @@
 bits    32
 
 section         .text
-        align   4
-        dd      0x1BADB002
-        dd      0x00
-        dd      - (0x1BADB002+0x00)
+	align   4
+	dd      0x1BADB002
+	dd      0x00
+	dd      - (0x1BADB002+0x00)
 
+	
+; Calling C kern_main function
 global start
 extern _kern_main
 start:
-        call _kern_main
-		cli
-        hlt
-		
-		
+	call _kern_main
+	cli
+	hlt
+
+	
 ; Global Descriptor Table
 global _gdt_reload_sr
 extern _gdt
