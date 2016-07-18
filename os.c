@@ -3,6 +3,7 @@
 #include "kernel/core/io.h"
 #include "kernel/std/stdio.h"
 #include "kernel/std/time.h"
+#include "kernel/std/string.h"
 #include "kernel/unittest/unittest.h"
 
 void print_time()
@@ -37,13 +38,13 @@ void kern_main()
 		else if (strcmp(cmd, "about") == 0)
 			output("NimgOS Alpha\nCopyright (c) 2016 Njifra and contributors.\nType \"credits\" to see a list of all contributors.");
 		else if (strcmp(cmd, "credits") == 0)
-			output("NimgOS\nCopyright (c) 2016 Njifra and contributors."
-			       "\nThanks to the following people, who contributed to this project:"
+			output("\nThanks to the following people, who contributed to this project:"
 			       "\n\tKrock (SmallJoker)"
 			       "\n\tZumza (Zumza123)"
 			       "\n\txerox123 (xerox123official)"
 			       "\n\tF4ncy (xshotD)"
-			       "\n\tbulldozer (bulldozer548)");
+			       "\n\tbulldozer (bulldozer548)"
+			       "\n\tNjifra (Njifra)");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
 		else if (strcmp(cmd, "restart") == 0)
