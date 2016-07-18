@@ -18,7 +18,7 @@ void gdt_init()
 {
 	// set up gdt_info
 	gdt.limit = (sizeof(struct GDT_entry) * 3) - 1;
-	gdt.base = &gdt_ent;
+	gdt.base = (u32)&gdt_ent;
 	
 	// NULL
 	gdt_entry_init(0, 0, 0, 0, 0);

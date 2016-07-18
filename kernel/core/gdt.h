@@ -21,8 +21,8 @@ struct GDT_entry gdt_ent[GDT_ENTRY_COUNT];
 // GDT
 struct GDT
 {
-	u16 limit; 
-	struct GDT_entry (*base)[GDT_ENTRY_COUNT];
+	u16 limit;
+	u32 base;
 };
 
 // define GDT with 3 entries
