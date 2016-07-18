@@ -59,3 +59,5 @@ chmod +x b4_linux
 ```
 
 This will build NimgOS and run it in an 32 bit QEMU enviroment.
+
+To easily build NimgOS, see [EASYINSTALL] (https://github.com/Njifra/NimgOS/blob/master/EASYINSTALL.md)
