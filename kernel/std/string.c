@@ -55,10 +55,14 @@ void *memset_w(void *dest, int val, size_t count)
 
 size_t strlen(const char *str)
 {
-	size_t start = (size_t)str;
-	while (*(++str) != '\0');
+	size_t len = 0;
 
-	return start - (size_t)str;
+	while (*str != '\0') {
+		len++;
+		str++;
+	}
+
+    return len;
 }
 
 char *strcpy(char *dest, const char *src){
