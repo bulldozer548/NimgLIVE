@@ -16,13 +16,13 @@ echo "###############################################"
 
 echo ""
 
-sleep 5
+sleep 3
 
 echo "################################"
 echo "# Installing a few packages... #"
 echo "################################"
 
-sleep 5
+sleep 3
 sudo apt install git xtightvncviewer nasm qemu
 
 echo ""
@@ -35,7 +35,7 @@ echo ""
 
 git clone https://github.com/Njifra/NimgOS.git
 cd NimgOS
-sleep 5
+sleep 3
 
 echo ""
 
@@ -55,11 +55,16 @@ chmod +x b4_linux
 
 echo ""
 
-echo "########################################"
-echo "# Done building NimgOS. To run the OS, #"
-echo "#         run ./NimgOS/b4_linux        #"
-echo "########################################"
+echo "#########################"
+echo "# Done building NimgOS. #"
+echo "#########################"
 
 echo ""
-sleep 5
+
+echo "To run the OS, change directory using 'cd NimgOS'"
+echo "             and execute ./b4_linux              "
+
+echo ""
+
+sleep 3
 echo "This script was created by xerox123 (xerox123official)"
