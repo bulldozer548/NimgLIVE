@@ -60,10 +60,13 @@ chmod +x b4_linux
 
 This will build NimgOS and run it in an 32 bit QEMU enviroment.
 
+Easy Installing (Linux)
+-----------------------
+
 To easily build NimgOS, see [easy_install.sh] (https://github.com/Njifra/NimgOS/raw/master/easy_install.sh)
 
 Make a copy of the install file in the directory where you want to clone NimgOS.
-Rename the file to 'easy_install.sh' and execute the following commands:
+Name the file to 'easy_install.sh' and execute the following commands:
 
 ```bash
 
@@ -76,3 +79,14 @@ chmod +x easy_install.sh
 ```
 
 This should build NimgOS.
+
+To run the OS, use:
+
+```bash
+
+# Change into the NimgOS directory
+cd NimgOS
+
+# Run the OS
+./b4_linux
+```
