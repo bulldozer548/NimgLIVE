@@ -28,7 +28,7 @@ Add the downloaded programs to your PATH environment variable.
 Create the directory `build` and run the script to build the project for the 32-bit QEMU environment.
 QEMU will be started automatically when the build was successful.
 
-[*1] Using MinGW requires a change in link.dl: Line 1 to `OUTPUT_FORMAT(pei-i386)`!
+[*1] Using MinGW requires a change in link.ld: Line 1 to `OUTPUT_FORMAT(pei-i386)`!
 
 
 # Building on Linux
