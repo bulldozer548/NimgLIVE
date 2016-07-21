@@ -1,15 +1,15 @@
 # ![NimgOS](http://puu.sh/pZokD/0c4a83186e.jpg)
-An operating system developed by people at the IRC server irc.rizon.net - channel #nimg_lobby
+An operating system developed by some of the people on the IRC network *irc.rizon.net* in the channel, *#nimg-lobby*
 
 License: MIT (see file LICENSE for more details)
 
 Code style guidelines: [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle)
 
 # Fair Warning
-This product is not finished or polished in any way. There is very few things to do in NimgOS, and that may change in the near future. However, you should consider this an 'Alpha.'
+This product is not finished or polished in any way. There are very few things to do in NimgOS, and that may change in the near future. However, you should consider this an 'Alpha.'
 
 ### Contributing
-Developers are welcome to contribute to the kernel, the C code, whatever their strong point is.
+Developers are welcome to contribute to the kernel, the C code or whatever their strong point is.
 
 
 # Building on Windows
@@ -38,7 +38,7 @@ Requirements
 1. [Nasm](http://www.nasm.us)
 2. [QEMU](http://wiki.qemu.org/Main_Page)
 
-and the requirements that go with those.
+Also make sure to install  the requirements that go with those.
 
 Build instructions
 ------------------
@@ -60,7 +60,7 @@ chmod +x b4_linux
 
 This will build NimgOS and run it in a 32 bit QEMU enviroment.
 
-Easy Installing (Linux)
+Easy Install (Linux)
 -----------------------
 
 To easily build NimgOS, see [easy_install.sh] (https://github.com/Njifra/NimgOS/raw/master/easy_install.sh)
