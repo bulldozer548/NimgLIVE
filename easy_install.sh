@@ -1,8 +1,20 @@
 #!/bin/bash
 
+echo " _   _ _                  ____   _____"
+echo "| \ | (_)                / __ \ / ____|"
+echo "|  \| |_ _ __ ___   __ _| |  | | (___"
+echo "| . ` | | '_ ` _ \ / _` | |  | |\___ \"
+echo "| |\  | | | | | | | (_| | |__| |____) |"
+echo "|_| \_|_|_| |_| |_|\__, |\____/|_____/"
+echo "                    __/ |"
+echo "                   |___/ helper script"
+echo "Made by xerox123official and xshotD."
+echo "License: MIT."
+
 echo "##################################################################################"
-echo "# Thanks for trying out NimgOS, this script was developed to easily build NimgOS #"
-echo "#  This script may request for root privilges to install git and other packages  #"
+echo "# This script was developed to easily build NimgOS without reading tons of docs  #"
+echo "#  This script will request for root privilges to install dependencies for this  #"
+echo "#                              at any time.                                      #"
 echo "##################################################################################"
 
 sleep 2
@@ -10,8 +22,8 @@ sleep 2
 echo ""
 
 echo "################## NOTICE #####################"
-echo "# This script may only work on a Debian/Ubntu #"
-echo "#                 based system                #"
+echo "# This script may only work on a Debian/Ubuntu #"
+echo "#                 based system.                #"
 echo "###############################################"
 
 echo ""
@@ -23,7 +35,7 @@ echo "# Installing a few packages... #"
 echo "################################"
 
 sleep 3
-sudo apt install git xtightvncviewer nasm qemu
+sudo apt install git xtightvncviewer nasm qemu gcc
 
 echo ""
 
@@ -67,4 +79,5 @@ echo "             and execute ./b4_linux              "
 echo ""
 
 sleep 3
-echo "This script was created by xerox123 (xerox123official)"
+
+echo "Thanks for trying out NimgOS!"
