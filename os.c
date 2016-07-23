@@ -58,7 +58,7 @@ void kern_main()
 			print_time();
 		}
 		else
-			write_string("Command not found.");
+			write_string("Invalid command.");
 
 		output("\n");
 
