@@ -20,6 +20,7 @@ echo ""
 echo "################## NOTICE #####################"
 echo "# This script may only work on a Debian/Ubuntu #"
 echo "#                 based system.                #"
+echo "#           This should change soon.           #"
 echo "###############################################"
 echo ""
 sleep 3
@@ -27,7 +28,17 @@ echo "################################"
 echo "# Installing a few packages... #"
 echo "################################"
 sleep 3
-sudo apt install git xtightvncviewer nasm qemu gcc
+sudo apt install git nasm qemu gcc
+if [ $? -eq 1 ]
+then
+   echo "Your operating system is:"
+   echo "Not compatible. The script couldn't find apt."
+   echo "Sorry :(."
+   echo "You can add code that makes your system compatible"
+   echo "by editing easy_install.sh on our GitHub."
+   echo "https;//github.com/Njifra/NimgOS"
+   exit 1
+fi
 echo ""
 echo "##############################"
 echo "# Cloning the git repository #"
@@ -59,8 +70,7 @@ echo "| (___  _   _  ___ ___ ___  ___ ___| |"
 echo " \___ \| | | |/ __/ __/ _ \/ __/ __| |"
 echo " ____) | |_| | (_| (_|  __/\__ \__ \_|"
 echo "|_____/ \__,_|\___\___\___||___/___(_)"
-echo "To run the OS, change directory using 'cd NimgOS'"
-echo "             and execute ./b4_linux              "
+echo "Execute ./b4_linux to get started."
 echo ""
 sleep 3
 echo "Thanks for trying out NimgOS!"
