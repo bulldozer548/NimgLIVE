@@ -18,7 +18,7 @@ Requirements
 
 1. [Nasm](http://www.nasm.us)
 2. [QEMU](http://wiki.qemu.org/Main_Page)
-3. [Cygwin](https://www.cygwin.com/) or [MinGW](http://mingw.org/) [*1]
+3. [Cygwin](https://www.cygwin.com/) or [MinGW](http://mingw.org/) [1]
 4. [A GCC cross-compiler toolchain for i586-elf](https://www.mediafire.com/folder/drj2bx193eiay/i586-elf-gcc) (only for Cygwin)
 
 Build instructions
@@ -28,7 +28,7 @@ Add the downloaded programs to your PATH environment variable.
 Create the directory `build` and run the script to build the project for the 32-bit QEMU environment.
 QEMU will be started automatically when the build was successful.
 
-[*1] Using MinGW requires a change in link.ld: Line 1 to `OUTPUT_FORMAT(pei-i386)`!
+[1] Using MinGW requires a change in link.ld: Line 1 to `OUTPUT_FORMAT(pei-i386)`!
 
 
 # Building on Linux
