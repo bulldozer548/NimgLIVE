@@ -29,6 +29,17 @@ gcc -m32 -o build/std_test.o -c kernel/unittest/std_test.c -nostdlib -lgcc
 echo "Compiling object files into kernel.bin"
 ld -m elf_i386 -T link.ld -o kernel.bin build/*.o
 
-echo "Running operating system"
+echo "Build is complete. Would you like to run it? [y/n]"
+read osrun
+case $osrun in 
+  y)
+echo "Running operating system - close QEMU to stop"
 qemu-system-i386 -kernel kernel.bin
 sed -n q </dev/tty
+;;
+  n)
+  echo "OK, run this command later if you want to run nimgOS."
+  echo "qemu-system-i386 -kernel kernel.bin"
+  ;;
+  *)
+  echo "Sorry, but that's a invalid answer."  
