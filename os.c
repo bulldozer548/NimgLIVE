@@ -21,7 +21,7 @@ void kern_main()
 	PS2_init();
 	std_test();
 
-	output("NimgOS started successfully on ");
+	output("Welcome to NimgOS. You booted this at ");
 	print_time();
 	output("\nType \"help\" to see all available commands.\nEnter a command:\n");
 
