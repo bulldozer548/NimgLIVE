@@ -36,7 +36,7 @@ void kern_main()
 		if (strcmp(cmd, "help") == 0)
 			output("Commands: help - about - credits - clear -  time - restart - todolist");
 		else if (strcmp(cmd, "about") == 0)
-			output("NimgOS Alpha\nCopyright (c) 2016 Njifra and contributors.\nType \"credits\" to see a list of all contributors.");
+			output("NimgOS Alpha\nCopyright (c) 2017 Njifra and contributors.\nType \"credits\" to see a list of all contributors.");
 		else if (strcmp(cmd, "credits") == 0)
 			output("\nThanks to the following people, who contributed to this project:"
 			       "\n\tKrock (SmallJoker)"
