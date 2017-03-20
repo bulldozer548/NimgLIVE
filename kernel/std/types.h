@@ -1,24 +1,17 @@
-#ifndef _STD_TYPES_H_
-#define _STD_TYPES_H_
+#ifndef NIMGOS_TYPES_H
+#define NIMGOS_TYPES_H
 
-typedef char*				string;
+typedef char int8;
+typedef unsigned char uint8;
+typedef unsigned short int uint16;
+typedef unsigned int uint32;
+typedef long long int int64;
 
-typedef unsigned char 		u8;
-typedef unsigned short 		u16;
-typedef unsigned int 		u32;
-typedef unsigned long long 	u64;
+typedef uint8 bool;
+#define TRUE 1
+#define FALSE 0
 
-typedef signed char 		s8;
-typedef signed short 		s16;
-typedef signed int 			s32;
-typedef signed long long	s64;
+#define NULL 0x0
+#define size_t uint32
 
-typedef unsigned int		size_t;
-typedef unsigned long long	time_t;
-
-typedef enum { false, true } bool;
-
-#define NULL 0
-
-#endif
-
+#endif //NIMGOS_TYPES_H

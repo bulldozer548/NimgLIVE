@@ -1,1 +1,0 @@
-void std_test();
