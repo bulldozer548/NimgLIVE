@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 
-print('(c) 2016 nimgOS developers')
+print('(c) 2017 nimgOS developers')
 print('--------------------------\n')
 
 # initalizing
