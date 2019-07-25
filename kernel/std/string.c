@@ -1,141 +1,75 @@
 #include "string.h"
 
-void *memcpy(void *dest, const void *src, size_t count)
-{
-	char *dest_c = (char*)dest;
-	char *src_c  = (char*)src;
-	size_t i;
+size_t strlen(const char *str) {
 
-	for (i = 0; i < count; i++)
-		*(dest_c + i) = *(src_c + i);
+    const char *end = str;
+    while(*end++) ;
+    return end - str;
 
-	return dest;
 }
 
-void *memmove(void *dest, const void *src, size_t count)
-{
-	char *dest_c = (char*)dest;
-	char *src_c  = (char*)src;
-	size_t i;
+void strcat(char *dest, const char *src) {
 
-	if (src > dest) {
-		for (i = 0; i < count; i++)
-			*(dest_c + i) = *(src_c + i);
-	} else {
-		for (i = count-1; i >= 0; i--)
-			*(dest_c + i) = *(src_c + i);
-	}
+    char *tmp = dest;
+    while (*dest) dest++;
+    while ((*dest++ = *src++) != NULL) ;
 
-	return dest;
 }
 
-void *memset(void *dest, int val, size_t count)
-{
-	char *dest_c = (char*)dest; 
-	char val_c   = (char)val; 
-	size_t i;
+int8 strcmp(const char *str1, const char *str2) {
 
-	for (i = 0; i < count; i++)
-		*(dest_c + i) = val_c;
+    char a, b;
 
-	return dest;
+    do {
+        a = *str1++;
+        b = *str2++;
+        if (a != b)
+            return (a < b ? -1 : 1);
+    } while (a && b);
+
+    return 0;
+
 }
 
-void *memset_w(void *dest, int val, size_t count)
-{
-	u16 *dest_w = (u16*)dest; 
-	u16 val_w   = (u16)val; 
-	size_t i;
+char *utoa(uint32 value, uint8 base) {
 
-	for (i = 0; i < count; i++)
-		*(dest_w + i) = val_w;
+    static char buf[11] = { 0 };
+    uint8 i = 10;
 
-	return dest;
+    do {
+        i--;
+        buf[i] = "0123456789ABCDEF"[value % base];
+        value /= 10;
+    } while (value);
+
+    return buf + i;
+
 }
 
-size_t strlen(const char *str)
-{
-	size_t len = 0;
+char tolower(char c) {
 
-	while (*str != '\0') {
-		len++;
-		str++;
-	}
+    if ('A' <= c && c <= 'Z')
+        return c += ' ';
+    return c;
 
-    return len;
 }
 
-char *strcpy(char *dest, const char *src){
+char toupper(char c) {
 
-	int i;
+    if('a' <= c && c <= 'z')
+        c -= ' ';
+    return c;
 
-	for (i = 0; *(src+i) != '\0'; i++)
-		*(dest + i) = *(src + i);
-
-	*(dest + i) = '\0';
-
-	return dest;
 }
 
-char *strcpy_n(char *dest, const char *src, size_t max_len)
-{
-	int i;
+void strlwr(char *str) {
 
-	for (i = 0; i < max_len - 1 && *(src + i) != '\0'; i++)
-		*(dest + i) = *(src + i);
+    while(*str) tolower(*str++);
 
-	*(dest + i) = '\0';
-
-	return dest;
 }
 
-char *strcat(char *dest, const char *src)
-{
-	return strcpy(dest + strlen(dest), src);
-}
+void strupr(char *str) {
 
-int strcmp(const char *s1, const char *s2)
-{
-	int i;
-	for (i = 0; true; i++){
-		if (s1[i] == '\0' && s2[i] == '\0')
-			return 0;
+    while(*str) toupper(*str++);
 
-		if (s1[i] != s2[i])
-			return s1[i] - s2[i];
-	}
-}
-
-char char2lower(char c)
-{
-	if ('A' <= c && c <= 'Z')
-		return c + ' ';
-	else 
-		return c;
-}
-
-char char2upper(char c)
-{
-	if ('a' <= c && c <= 'z')
-		return c - ' ';
-	else 
-		return c;
-}
-
-void str2lower(char *str)
-{
-	u32 length = strlen(str);
-
-	u32 i = 0;
-	for(; i < length; i++)
-		str[i] = char2lower(str[i]);
-}
-
-void str2upper(char *str)
-{
-	u32 length = strlen(str);
-	
-	u32 i = 0;
-	for(; i < length; i++)
-		str[i] = char2upper(str[i]);
 }
