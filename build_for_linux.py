@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import os
 
-print('(c) 2017 nimgOS developers')
-print('--------------------------\n')
+print('(c) 2019 nimgOS Team')
+print('--------------------\n')
 
 # initalizing
 obj_files = []
@@ -37,5 +37,5 @@ if os.path.exists('./build/kernel.bin'):
     print('\nIt worked :)')
     os.system(qemu_cmd)
 else:
-    print('\nThere had been some errors...')
+    print('\nThere have been some errors...')
     print('You may join channel #nimg_lobby at irc.rizon.net for help. :)')
