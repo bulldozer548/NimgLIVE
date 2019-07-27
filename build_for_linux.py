@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import os
 
-print('(c) 2019 nimgOS Team')
-print('--------------------\n')
+print('(c) 2019 nimgOS developers')
+print('--------------------------\n')
 
 # initalizing
 obj_files = []

@@ -1,14 +1,14 @@
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
 
-echo (c) 2019 nimgOS Team
-echo --------------------
+echo (c) 2019 nimgLIVE
+echo -----------------
 
 if not exist build (
-	echo Creating a folder for the build
+	echo Creating a folder for the build...
 	md build
 ) else (
-	echo Wiping build directory
+	echo Wiping build directory...
 	del /q build
 )
 echo Compiling kernel.asm...

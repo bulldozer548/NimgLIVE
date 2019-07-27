@@ -6,4 +6,6 @@
 uint8 inportb(uint16 port);
 void outportb(uint16 port, uint8 data);
 
+void reboot();
+
 #endif //NIMGOS_HARDWARE_H
